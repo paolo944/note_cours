@@ -2,37 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 from webbrowser import *
 from tkinter.font import *
-import smtplib
-
-def mail(dac):
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-
-    sender_email = "mon.test.python4@gmail.com"
-    rec_email = "paolomekhail4@gmail.com"
-    password = "CoucouPython.13122002"
-    sujet = "Note cours python"
-    if dac:
-        message = "Elle/Il a aime le cours ;)"
-    else:
-        message = "Ce fut un pouce gros rouge"
-
-    email_text = """\
-    From: %s
-    To: %s
-    Subject: %s
-
-    %s
-    """ % (sender_email, rec_email, sujet, message)
-
-    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.ehlo()
-    server.login(sender_email, password)
-    server.sendmail(sender_email, rec_email, email_text)
-    server.close()
-    print("mail envoyé")
 
 #fenetre principale
 root = Tk()
@@ -58,8 +27,6 @@ def rouge():
     else:
         root.quit()
 
-    mail(False)
-
 def bleu():
     messagebox.showinfo("GG 404", "Pour te récompenser('et nous récompenser'), voila nos réseaux,\n\n                                 bisous")
     open("https://www.instagram.com/romain_fbn/")
@@ -67,7 +34,6 @@ def bleu():
     open("romain.png")
     open("poula.png")
 
-    mail(True)
 
 font = Font(family="roboto", size=28, underline=True, slant="italic")
 
@@ -89,4 +55,3 @@ pouce_rouge_bt.place(anchor=CENTER, relx=0.6, rely=0.5)
 
 
 root.mainloop()
-
